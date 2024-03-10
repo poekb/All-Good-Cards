@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+* {
+  min-width: 0;
+}
+body {
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100svh;
+
+  @apply bg-zinc-800;
+}
+
+@keyframes scaleIn {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.scale-in {
+  animation: 0.3s ease-out 0s 1 scaleIn;
+}
+
+.text-that-needs-wrapping {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  word-break: break-word;
+
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.shy {
+  content: "\u00AD";
+}
+
+.gigabold {
+  font-weight: 900;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-zinc-800;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-700 rounded-full transition-all;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-zinc-600 transition-all;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232300;
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+.rotating-edge {
+  position: relative;
+
+  --rotation: 0deg;
+  --edge-color: rgb(228 228 231);
+  --edge-color-2: rgb(24 24 27);
+}
+
+.rotating-edge::after,
+.rotating-edge::before {
+  content: "";
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  transition: all 500ms;
+  z-index: -10;
+
+  background-image: conic-gradient(
+    from var(--rotation),
+    var(--edge-color),
+    var(--edge-color),
+    var(--edge-color-2),
+    var(--edge-color-2),
+    var(--edge-color),
+    var(--edge-color),
+    var(--edge-color-2),
+    var(--edge-color-2),
+    var(--edge-color)
+  );
+  animation: login-form infinite linear;
+}
+
+.rotating-edge::after {
+  filter: blur(0.25rem);
+}
